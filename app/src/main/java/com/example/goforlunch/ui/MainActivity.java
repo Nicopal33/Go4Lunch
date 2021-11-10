@@ -12,6 +12,7 @@ import com.example.goforlunch.databinding.ActivityMainBinding;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.ErrorCodes;
 import com.firebase.ui.auth.IdpResponse;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Arrays;
@@ -41,9 +42,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
     }*/
 
-    private void showSnackBar (String message) {
-        Snackbar.make(binding.mainLayout, message, Snackbar.LENGTH_SHORT).show();
-    }
+
 
 
     private void startSignInActivity() {
@@ -68,7 +67,9 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         this.handleResponseAfterSignIn (requestCode, resultCode, data);
     }
 
+
     private void handleResponseAfterSignIn (int requestCode, int resultCode, Intent data) {
+
         IdpResponse response = IdpResponse.fromResultIntent(data);
 
         if (requestCode == RC_SIGN_IN) {
@@ -92,6 +93,9 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
         }
 
+    }
+    private void showSnackBar (String message) {
+        Snackbar.make(binding.mainLayout, message, Snackbar.LENGTH_SHORT).show();
     }
 
 }

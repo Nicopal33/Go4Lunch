@@ -6,31 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".ui.MenuActivity">
 
-    <fragment
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:name="com.example.goforlunch.bottomfragments.MapViewFragment"/>
 
-    <FrameLayout
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:navGraph="@navigation/navigation"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:defaultNavHost="true"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/activity_menu_bottom_navigation"
+    </androidx.fragment.app.FragmentContainerView>
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/nav_bottom_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
             app:itemIconTint="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:itemTextColor="@color/black"
-            android:layout_gravity="bottom"
-            app:menu="@menu/bottom_navigation_menu"
-            android:layout_alignParentBottom="true"/>
+            app:menu="@menu/bottom_navigation_menu" />
 
 
-    </FrameLayout>
 
 
 
