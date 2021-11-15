@@ -17,5 +17,8 @@
     <string name="bottom_navigation_menu_mapview">Map View</string>
     <string name="bottom_navigation_menu_listview">List View</string>
     <string name="bottom_navigation_menu_workmates">Workmates</string>
+    <string name="navigation_drawer_open">Open Navagation Drawer</string>
+    <string name="navigation_drawer_close">Close Navigation Drawer</string>
+
 
 </resources>

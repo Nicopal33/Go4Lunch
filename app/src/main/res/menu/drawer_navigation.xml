@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/your_lunch"
+        android:title="YOUR LUNCH"
+        android:icon="@drawable/baseline_restaurant_menu_white_24dp"/>
+
+    <item
+        android:id="@+id/settings"
+        android:title="SETTINGS"
+        android:icon="@drawable/baseline_settings_white_24dp"/>
+
+    <item
+        android:id="@+id/logout"
+        android:title="LOGOUT"
+        android:icon="@drawable/baseline_power_settings_new_white_24dp"/>
+
+</menu>
