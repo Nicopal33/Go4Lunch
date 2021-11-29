@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/item_restaurant"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/restaurant_photo"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:contentDescription="Photo Restaurant"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="15sp" />
+
+    <TextView
+        android:id="@+id/restaurant_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/restaurant_photo"
+        app:layout_constraintTop_toTopOf="@+id/restaurant_photo"
+        tools:text="120m"/>
+
+    <ImageView
+        android:id="@+id/restaurant_workmate"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/baseline_person_outline_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/restaurant_photo"
+        app:layout_constraintStart_toStartOf="@+id/restaurant_distance"
+        app:layout_constraintTop_toBottomOf="@id/restaurant_distance"
+        app:layout_constraintVertical_bias="0.107" />
+
+    <TextView
+        android:id="@+id/restaurant_nbr_work"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="@id/restaurant_photo"
+        app:layout_constraintStart_toStartOf="@id/restaurant_distance"
+        tools:text="3" />
+
+    <androidx.appcompat.widget.AppCompatRatingBar
+        android:id="@+id/restaurant_ratin_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?android:attr/ratingBarStyleSmall"
+        android:isIndicator="true"
+        android:numStars="3"
+        android:theme="@style/RatingBar"
+        app:layout_constraintBottom_toBottomOf="@id/restaurant_photo"
+        app:layout_constraintEnd_toEndOf="@id/restaurant_distance"
+        tools:rating="2"/>
+
+    <TextView
+        android:id="@+id/restaurant_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:maxLines="1"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/restaurant_photo"
+        tools:text="Le Zinc"/>
+
+    <TextView
+        android:id="@+id/restaurant_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:maxLines="1"
+        app:layout_constraintBottom_toBottomOf="@id/restaurant_photo"
+        app:layout_constraintStart_toStartOf="@id/restaurant_name"
+        app:layout_constraintEnd_toStartOf="@id/restaurant_workmate"
+        app:layout_constraintTop_toTopOf="@id/restaurant_photo"
+        tools:text="French-12 Rue du Faubourg Poissonnière"/>
+
+    <TextView
+        android:id="@+id/restaurant_opening"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:maxLines="1"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="@id/restaurant_photo"
+        app:layout_constraintEnd_toStartOf="@id/restaurant_ratin_bar"
+        app:layout_constraintStart_toStartOf="@id/restaurant_name"
+        tools:text="Open until 7pm"/>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

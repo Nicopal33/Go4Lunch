@@ -20,5 +20,6 @@
     <string name="navigation_drawer_open">Open Navagation Drawer</string>
     <string name="navigation_drawer_close">Close Navigation Drawer</string>
 
+    <string name="permission_rationale">Location permission is needed for core functionaly</string>
 
 </resources>

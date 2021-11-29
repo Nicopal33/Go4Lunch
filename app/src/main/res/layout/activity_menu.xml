@@ -45,18 +45,19 @@
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/frameLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/bottombar"
             app:navGraph="@navigation/navigation"
             android:name="androidx.navigation.fragment.NavHostFragment"
             app:defaultNavHost="true"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/toolbar"/>
 
         <RelativeLayout
             android:id="@+id/bottombar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            app:layout_constraintTop_toBottomOf="@id/frameLayout"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
@@ -66,10 +67,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                app:itemIconTint="@color/black"
+                app:itemIconTint="@drawable/bottom_navigation_colors"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:itemTextColor="@color/black"
+                app:itemTextColor="@drawable/bottom_navigation_colors"
                 app:menu="@menu/bottom_navigation_menu" />
 
         </RelativeLayout>
