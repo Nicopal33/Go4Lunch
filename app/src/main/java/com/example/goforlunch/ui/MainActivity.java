@@ -2,7 +2,6 @@ package com.example.goforlunch.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.UserManager;
 
 import androidx.annotation.Nullable;
 
@@ -10,6 +9,7 @@ import com.example.goforlunch.R;
 import com.example.goforlunch.databinding.ActivityMainBinding;
 
 
+import com.example.goforlunch.manager.UserManager;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.ErrorCodes;
 import com.firebase.ui.auth.IdpResponse;
@@ -80,6 +80,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
                 showSnackBar(getString(R.string.connection_succeed));
                 Intent intent = new Intent(this, MenuActivity.class);
+                UserManager.getInstance().createUser();
                 startActivity (intent);
             } else {
                 //ERROR

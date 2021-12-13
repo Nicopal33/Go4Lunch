@@ -60,6 +60,8 @@ dependencies {
 
     //FIREBASE UI
     implementation 'com.firebaseui:firebase-ui-auth:6.4.0'
+    implementation 'com.firebaseui:firebase-ui-firestore:6.4.0'
+
 
     //NAVIGATION
     implementation 'androidx.navigation:navigation-fragment:2.3.5'

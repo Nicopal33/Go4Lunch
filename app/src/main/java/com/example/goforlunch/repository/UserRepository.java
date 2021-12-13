@@ -30,7 +30,7 @@ public class UserRepository {
             return result;
         }
         synchronized (UserRepository.class) {
-            if (instance !=null) {
+            if (instance ==null) {
                 instance = new UserRepository();
             }
             return instance;

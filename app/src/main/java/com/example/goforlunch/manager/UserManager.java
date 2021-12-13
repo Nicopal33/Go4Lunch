@@ -22,7 +22,7 @@ public class UserManager {
         if (result != null) {
             return result;
         }
-        synchronized (UserRepository.class) {
+        synchronized (UserManager.class) {
             if (instance == null) {
                 instance = new UserManager();
             }

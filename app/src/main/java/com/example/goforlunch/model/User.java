@@ -15,7 +15,7 @@ public class User {
     public User() {}
 
     public User (String userId, String userName, @Nullable String avatarUrl) {
-        this.uid = uid;
+        this.uid = userId;
         this.userName = userName;
         this.avatarUrl = avatarUrl;
     }

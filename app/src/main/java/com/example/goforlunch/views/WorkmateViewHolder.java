@@ -12,9 +12,9 @@ import com.example.goforlunch.R;
 
 public class WorkmateViewHolder extends RecyclerView.ViewHolder {
 
-    final ImageView avatar;
-    final TextView workmateText;
-    final TextView restName;
+    public final ImageView avatar;
+    public final TextView workmateText;
+    public final TextView restName;
 
     public WorkmateViewHolder(View itemView) {
         super(itemView);

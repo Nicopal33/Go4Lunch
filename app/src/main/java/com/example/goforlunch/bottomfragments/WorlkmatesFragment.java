@@ -23,13 +23,10 @@ import java.util.List;
 
 public class WorlkmatesFragment  extends Fragment  {
 
-    private final List<User> users = new ArrayList<>();
     private RecyclerView recyclerView;
-    private ListWorkRecyclerViewAdapter myAdapter;
-    private List <User> mUser;
 
 
-    private final ListWorkRecyclerViewAdapter adapter = new ListWorkRecyclerViewAdapter(users) ;
+    private  ListWorkRecyclerViewAdapter adapter;
 
 
     public WorlkmatesFragment() {
@@ -43,7 +40,7 @@ public class WorlkmatesFragment  extends Fragment  {
                              Bundle savedInstanceState) {
         com.example.goforlunch.databinding.FragmentWorlkmatesBinding fragmentWorlkmatesBinding =
                 FragmentWorlkmatesBinding.inflate(inflater,container,false);
-        RecyclerView view = fragmentWorlkmatesBinding.getRoot();
+        View view = fragmentWorlkmatesBinding.getRoot();
         Context context = view.getContext();
         view.setLayoutManager(new LinearLayoutManager(context));
         view.setAdapter(adapter);
@@ -53,11 +50,7 @@ public class WorlkmatesFragment  extends Fragment  {
 
 
 
-    private void updateUsers (List<User> users) {
-        this.users.clear();
-        this.users.addAll(users);
-        adapter.notifyDataSetChanged();
-    }
+
 
 
 
