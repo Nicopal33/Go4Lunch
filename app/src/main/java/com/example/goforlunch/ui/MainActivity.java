@@ -2,6 +2,7 @@ package com.example.goforlunch.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.UserManager;
 
 import androidx.annotation.Nullable;
 
@@ -21,6 +22,7 @@ import java.util.List;
 public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
     private static final int RC_SIGN_IN = 123;
+
 
 
     @Override
@@ -75,6 +77,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
         if (requestCode == RC_SIGN_IN) {
             //SUCCESS
             if (resultCode == RESULT_OK) {
+
                 showSnackBar(getString(R.string.connection_succeed));
                 Intent intent = new Intent(this, MenuActivity.class);
                 startActivity (intent);
