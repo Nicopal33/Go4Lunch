@@ -3,7 +3,6 @@ package com.example.goforlunch.repository;
 import android.content.Context;
 
 import androidx.annotation.Nullable;
-import androidx.lifecycle.MutableLiveData;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.Task;
@@ -13,10 +12,8 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.List;
-import java.util.Objects;
-
 import com.example.goforlunch.model.User;
+import com.google.firebase.firestore.Query;
 
 public class UserRepository {
 
@@ -36,7 +33,7 @@ public class UserRepository {
             return instance;
         }
     }
-
+    // get the current user connected
     @Nullable
     public FirebaseUser getCurrentUser() {
         return FirebaseAuth.getInstance().getCurrentUser();
@@ -119,6 +116,11 @@ public class UserRepository {
         if (uid != null){
             this.getUsersCollection().document(uid).delete();
         }
+    }
+
+        public Query getAllUsers () {
+        return this.getUsersCollection()
+                .orderBy("uid");
     }
 
 

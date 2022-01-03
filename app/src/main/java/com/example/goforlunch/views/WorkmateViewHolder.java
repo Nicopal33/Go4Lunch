@@ -18,11 +18,10 @@ public class WorkmateViewHolder extends RecyclerView.ViewHolder {
 
     public WorkmateViewHolder(View itemView) {
         super(itemView);
-
         avatar = itemView.findViewById(R.id.workmate_photo);
         workmateText = itemView.findViewById(R.id.workmate_text);
         restName = itemView.findViewById(R.id.rest_name);
-
     }
-}
 
+
+}

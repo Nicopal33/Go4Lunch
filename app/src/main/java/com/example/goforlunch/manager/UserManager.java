@@ -7,6 +7,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 import com.example.goforlunch.model.User;
 import com.example.goforlunch.repository.UserRepository;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.Query;
 
 public class UserManager {
 
@@ -57,8 +59,10 @@ public class UserManager {
             // Once done, delete the user datas from Firestore
             userRepository.deleteUserFromFirestore();
         });
+    }
 
-
+    public Query getAllUsers () {
+        return userRepository.getAllUsers();
     }
 
 }

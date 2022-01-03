@@ -188,7 +188,7 @@ public class MapViewFragment extends Fragment
                 LatLng mLastKnownLocationLatLng = new
                         LatLng(Objects.requireNonNull(lastKnownLocation).getLatitude(), lastKnownLocation.getLongitude());
                 map.moveCamera(CameraUpdateFactory.newLatLngZoom(mLastKnownLocationLatLng,10));
-
+                ////////
             });
         }else {
             requestPermissions();
