@@ -6,7 +6,6 @@ public class User {
 
     private String uid;
     private String userName;
-    @Nullable
     private String avatarUrl;
     public String restaurantName;
     public String restaurant;

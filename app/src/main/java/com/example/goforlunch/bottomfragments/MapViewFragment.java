@@ -2,18 +2,13 @@ package com.example.goforlunch.bottomfragments;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.Context;
-import android.content.RestrictionsManager;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
+import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -22,8 +17,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
+import com.example.goforlunch.model.restaurants.RestauOutputs;
+import com.example.goforlunch.model.restaurants.ResultRestau;
+import com.example.goforlunch.ui.viewmodel.NearbyRestViewModel;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -32,13 +29,14 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener;
-import com.google.android.gms.maps.GoogleMap.OnMyLocationClickListener;
 
 import com.example.goforlunch.BuildConfig;
 import com.example.goforlunch.R;
 import com.google.android.material.snackbar.Snackbar;
 
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -55,6 +53,8 @@ public class MapViewFragment extends Fragment
     private FusedLocationProviderClient fusedLocationClient;
     private Location lastKnownLocation;
     private final int PERMISSION_ID = 15;
+    List<ResultRestau> restaurantList = new ArrayList<>();
+    private NearbyRestViewModel mNearbyRestViewModel;
 
 
 
@@ -189,10 +189,32 @@ public class MapViewFragment extends Fragment
                         LatLng(Objects.requireNonNull(lastKnownLocation).getLatitude(), lastKnownLocation.getLongitude());
                 map.moveCamera(CameraUpdateFactory.newLatLngZoom(mLastKnownLocationLatLng,10));
                 ////////
+                getPlaces();
             });
         }else {
             requestPermissions();
         }
+    }
+
+    private void getPlaces() {
+        String location = lastKnownLocation.getLatitude() +"," + lastKnownLocation.getLongitude();
+        mNearbyRestViewModel.getRestaurantsList(location, "1000", BuildConfig.API_KEY).observe(getViewLifecycleOwner(),
+                this::getRestaurants);
+
+    }
+
+    @RequiresApi (api= Build.VERSION_CODES.LOLLIPOP)
+    private void getRestaurants (RestauOutputs restaurants) {
+        if ((restaurants !=null)) {
+            restaurantList = restaurants.getResults();
+            for (ResultRestau restaurant : restaurantList) {
+                LatLng latLng = new LatLng(restaurant.getGeometry().getLocation().getLatitude(),
+                        restaurant.getGeometry().getLocation().getLongitude());
+                String id = restaurant.getPlaceId();
+
+            }
+        }
+
     }
 
 
