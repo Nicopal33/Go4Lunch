@@ -9,7 +9,7 @@ import com.example.goforlunch.model.User;
 import com.example.goforlunch.repository.UserCRUDRepository;
 import com.google.firebase.firestore.Query;
 
-public class UserManager {
+/*public class UserManager {
 
     private static volatile UserManager instance;
     private UserCRUDRepository userRepository;
@@ -65,3 +65,5 @@ public class UserManager {
     }
 
 }
+
+ */

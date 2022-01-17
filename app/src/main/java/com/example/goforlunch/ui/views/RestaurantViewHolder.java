@@ -29,7 +29,7 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder {
         opening = itemView.findViewById(R.id.restaurant_opening);
         distance = itemView.findViewById(R.id.restaurant_distance);
         nbWorkmates = itemView.findViewById(R.id.restaurant_nbr_work);
-        ratingBar = itemView.findViewById(R.id.restaurant_ratin_bar);
+        ratingBar = itemView.findViewById(R.id.restaurant_rating_bar);
 
 
 

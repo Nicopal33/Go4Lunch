@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import com.example.goforlunch.R;
 import com.example.goforlunch.adapter.ListWorkRecyclerViewAdapter;
 import com.example.goforlunch.databinding.FragmentWorlkmatesBinding;
-import com.example.goforlunch.manager.UserManager;
+//import com.example.goforlunch.manager.UserManager;
 import com.example.goforlunch.model.User;
 import com.example.goforlunch.repository.UserInjection;
 import com.example.goforlunch.repository.UserViewModelFactory;
@@ -31,7 +31,7 @@ import java.util.List;
 public class WorlkmatesFragment  extends Fragment  {
 
     private RecyclerView recyclerView;
-    private UserManager userManager = UserManager.getInstance();
+    //private UserManager userManager = UserManager.getInstance();
     private final List<User> users = new ArrayList<>();
     public UserViewModel mViewModel;
     private  ListWorkRecyclerViewAdapter adapter;
