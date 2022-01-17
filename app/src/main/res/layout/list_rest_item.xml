@@ -24,8 +24,8 @@
         android:layout_marginEnd="15dp"
         android:textSize="16dp"
         app:layout_constraintEnd_toStartOf="@+id/restaurant_photo"
-        app:layout_constraintTop_toTopOf="@+id/restaurant_photo"
-        tools:text="120m"/>
+        app:layout_constraintTop_toTopOf="@+id/restaurant_photo"/>
+        //tools:text="120m"/>
 
     <ImageView
         android:id="@+id/restaurant_workmate"
@@ -48,7 +48,7 @@
         tools:text="3" />
 
     <androidx.appcompat.widget.AppCompatRatingBar
-        android:id="@+id/restaurant_ratin_bar"
+        android:id="@+id/restaurant_rating_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="?android:attr/ratingBarStyleSmall"
@@ -68,8 +68,8 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/restaurant_photo"
-        tools:text="Le Zinc"/>
+        app:layout_constraintTop_toTopOf="@id/restaurant_photo"/>
+        //tools:text="Le Zinc"/>
 
     <TextView
         android:id="@+id/restaurant_text"
@@ -80,8 +80,8 @@
         app:layout_constraintBottom_toBottomOf="@id/restaurant_photo"
         app:layout_constraintStart_toStartOf="@id/restaurant_name"
         app:layout_constraintEnd_toStartOf="@id/restaurant_workmate"
-        app:layout_constraintTop_toTopOf="@id/restaurant_photo"
-        tools:text="French-12 Rue du Faubourg Poissonnière"/>
+        app:layout_constraintTop_toTopOf="@id/restaurant_photo"/>
+        //tools:text="French-12 Rue du Faubourg Poissonnière"/>
 
     <TextView
         android:id="@+id/restaurant_opening"
@@ -91,7 +91,7 @@
         android:maxLines="1"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="@id/restaurant_photo"
-        app:layout_constraintEnd_toStartOf="@id/restaurant_ratin_bar"
+        app:layout_constraintEnd_toStartOf="@id/restaurant_rating_bar"
         app:layout_constraintStart_toStartOf="@id/restaurant_name"
         tools:text="Open until 7pm"/>
 

@@ -6,17 +6,16 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;
 
 import com.example.goforlunch.model.User;
-import com.example.goforlunch.repository.UserRepository;
-import com.google.firebase.firestore.CollectionReference;
+import com.example.goforlunch.repository.UserCRUDRepository;
 import com.google.firebase.firestore.Query;
 
 public class UserManager {
 
     private static volatile UserManager instance;
-    private UserRepository userRepository;
+    private UserCRUDRepository userRepository;
 
     private UserManager() {
-        userRepository = UserRepository.getInstance();
+        userRepository = UserCRUDRepository.getInstance();
     }
 
     public static UserManager getInstance() {

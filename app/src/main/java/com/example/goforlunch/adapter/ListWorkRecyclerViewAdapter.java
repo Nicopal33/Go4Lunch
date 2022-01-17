@@ -1,58 +1,101 @@
 package com.example.goforlunch.adapter;
 
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.example.goforlunch.R;
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.GlideBuilder;
+import com.bumptech.glide.request.RequestOptions;
+import com.example.goforlunch.databinding.FragmentListViewBinding;
 import com.example.goforlunch.databinding.WorkmatesItemBinding;
 import com.example.goforlunch.model.User;
+import com.example.goforlunch.ui.DetailRestActivity;
 import com.example.goforlunch.ui.views.WorkmateViewHolder;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
-public class ListWorkRecyclerViewAdapter
-        extends FirestoreRecyclerAdapter<User, WorkmateViewHolder> {
+import org.jetbrains.annotations.NotNull;
 
-    public ListWorkRecyclerViewAdapter(FirestoreRecyclerOptions<User> options) {
-        super(options);
-        }
+import java.util.Collections;
+import java.util.List;
+
+import static androidx.core.content.ContextCompat.startActivity;
+
+public class ListWorkRecyclerViewAdapter
+        extends RecyclerView.Adapter<ListWorkRecyclerViewAdapter.ViewHolder> {
+
+    private final List<User> users;
+
+    public ListWorkRecyclerViewAdapter(List<User> users) {this.users = users; }
 
     @NonNull
     @Override
-    public WorkmateViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        WorkmatesItemBinding workmatesItemBinding =
-                (WorkmatesItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
-        return new WorkmateViewHolder(workmatesItemBinding.getRoot());
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        com.example.goforlunch.databinding.WorkmatesItemBinding workmatesItemBinding =
+                (WorkmatesItemBinding.inflate(LayoutInflater.from(parent.getContext()),
+                        parent, false));
+        return new ViewHolder(workmatesItemBinding);
     }
-
 
     @Override
-    protected void onBindViewHolder(@NonNull WorkmateViewHolder holder, int position, @NonNull User user) {
-        String userKnowWhatEatingText = user.getUserName() + " is eating" + user.getRestaurantName();
-        String userDontKnowWhatEating = user.getUserName() + " hasn't decided yet";
+    public void onBindViewHolder (@NotNull final ViewHolder holder, int position) {
+        User user = users.get(position);
+        String userKnowWhatEatingText = user.getUserName() +
+                "it's eating" + user.getRestaurantName();
+        String userDoestKnowWhatEating = user.getUserName() + "hasn't decided yet";
         String placeId = user.getRestaurant();
         if (user.getRestaurantName() !=null && !user.getRestaurantName().equals("")) {
-            holder.workmateText.setText(userDontKnowWhatEating);
-            //holder.mWorkmatesItemBinding.getRoot().setOnClickListener(v -> {
-           //     Intent intent = new Intent(v.getContext(), DetailRest.class);
-             //   intent.putExtra("place Id", placeId);
-             //   startActivity(v.getContext(),intent,null);
-           // });
+            holder.workmateText.setText(userKnowWhatEatingText);
+            holder.workmateText.setTextColor(Color.BLACK);
+            holder.workmateText.setTypeface(holder.workmateText.getTypeface(), Typeface.NORMAL);
+            holder.mWorkmatesBinding.getRoot().setOnClickListener(v -> {
+                Intent intent = new Intent(v.getContext(), DetailRestActivity.class);
+                intent.putExtra("place Id", placeId);
+                startActivity(v.getContext(), intent, null);
+            });
         }
         else {
-            holder.workmateText.setText(userDontKnowWhatEating);
+            holder.workmateText.setText(userDoestKnowWhatEating);
+            holder.workmateText.setTypeface(holder.workmateText.getTypeface(), Typeface.ITALIC);
+            holder.workmateText.setTextColor(Color.GRAY);
         }
-        //if (user.getPicture() !=null) {
-        //    Glide.with(holder.workmatePhoto.getContext()).load(user.getPicture())
-        //            .apply(RequestOptions.circleCropTransform()).into(holder.workmatePhoto);
-       // }
-       // else {
-        //    holder.workmatePhoto.setColorFilter(Integer.parseInt("@color/primary_color"));
-       // }
+        if (user.getPicture() !=null) {
+            Glide.with(holder.workmatePhoto.getContext()).load(user.getPicture())
+                    .apply(RequestOptions.circleCropTransform()).into(holder.workmatePhoto);
+        }
+        else {
+            holder.workmatePhoto.setColorFilter(R.color.primary_color);
+        }
+        Collections.sort(users, new User.UserRestaurantComparator());
+}
 
+    @Override
+    public int getItemCount() { return users.size(); }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+
+        public ImageView workmatePhoto;
+        public TextView workmateText;
+        public WorkmatesItemBinding mWorkmatesBinding;
+
+        public ViewHolder (WorkmatesItemBinding workmatesItemBinding) {
+            super(workmatesItemBinding.getRoot());
+           mWorkmatesBinding = workmatesItemBinding;
+            workmatePhoto = workmatesItemBinding.workmatePhoto;
+            workmateText = workmatesItemBinding.workmateText;
+        }
     }
 
-
-
+    @NotNull
+    @Override
+    public String toString () {return super.toString();
+    }
 }

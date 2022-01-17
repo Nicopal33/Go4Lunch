@@ -12,6 +12,7 @@ import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,7 +21,10 @@ import android.view.ViewGroup;
 
 import com.example.goforlunch.model.restaurants.RestauOutputs;
 import com.example.goforlunch.model.restaurants.ResultRestau;
+import com.example.goforlunch.ui.viewmodel.NearbyInjection;
 import com.example.goforlunch.ui.viewmodel.NearbyRestViewModel;
+import com.example.goforlunch.ui.viewmodel.NearbyRestViewModelFactory;
+import com.example.goforlunch.ui.viewmodel.NearbyViewModelFactory;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -88,6 +92,9 @@ public class MapViewFragment extends Fragment
         if (mapFragment != null) {
             mapFragment.getMapAsync(this);
         }
+        configureNearbyRestViewModel();
+
+
 
         return root;
         
@@ -215,6 +222,16 @@ public class MapViewFragment extends Fragment
             }
         }
 
+    }
+
+    //@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+   // private void setMarker (LatLng latLng, String id) {
+      //  mUser
+    //}
+
+    private void configureNearbyRestViewModel() {
+        NearbyViewModelFactory nearbyRestViewModelFactory = NearbyInjection.provideRestaurantViewModel();
+        mNearbyRestViewModel = new ViewModelProvider(this, nearbyRestViewModelFactory).get(NearbyRestViewModel.class);
     }
 
 

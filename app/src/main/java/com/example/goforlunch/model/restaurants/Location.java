@@ -7,6 +7,7 @@ import java.util.Date;
 
 public class Location {
 
+    public double getLatitude;
     @SerializedName("lat")
     @Expose
     private Double lat;
@@ -20,4 +21,6 @@ public class Location {
 
     private Double getLng() {return lng;}
     private void setLng (Double lng) {this.lng = lng;}
+
+
 }
