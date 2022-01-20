@@ -13,7 +13,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,13 +20,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.goforlunch.BuildConfig;
 import com.example.goforlunch.R;
-import com.example.goforlunch.databinding.FragmentListViewBinding;
 import com.example.goforlunch.databinding.ListRestItemBinding;
 import com.example.goforlunch.model.User;
 import com.example.goforlunch.model.restaurants.ResultRestau;
 import com.example.goforlunch.repository.UserInjection;
 import com.example.goforlunch.repository.UserViewModelFactory;
-import com.example.goforlunch.ui.DetailRestActivity;
+import com.example.goforlunch.ui.DetailActivity;
 import com.example.goforlunch.ui.viewmodel.UserViewModel;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -38,7 +36,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static androidx.core.content.ContextCompat.startActivity;
-import static com.google.gson.reflect.TypeToken.get;
 
 public class ListRestRecyclerViewAdapter
         extends RecyclerView.Adapter<ListRestRecyclerViewAdapter.ViewHolder> {
@@ -76,7 +73,7 @@ public class ListRestRecyclerViewAdapter
 
         if (restaurant.getGeometry() !=null) {
             double distanceDouble = meterDistanceBetweenPoints(restaurant.getGeometry()
-                    .getLocation().getLatitude(),restaurant.getGeometry().getLocation().getLongitude(),
+                    .getLocation().getLat(),restaurant.getGeometry().getLocation().getLng(),
                     mLastKnowLocation.getLatitude(), mLastKnowLocation.getLongitude());
             String distance = (int) distanceDouble + "m";
             holder.mRestaurantDistance.setText(distance);
@@ -119,7 +116,7 @@ public class ListRestRecyclerViewAdapter
         mUserViewModel.getUsers()
                 .observe((LifecycleOwner) context, users -> setUsers(users, restaurant, holder));
         holder.mListRestItemBinding.getRoot().setOnClickListener(v -> {
-            Intent intent = new Intent(v.getContext(), DetailRestActivity.class);
+            Intent intent = new Intent(v.getContext(), DetailActivity.class);
             intent.putExtra("placeId", placeId);
             startActivity(v.getContext(), intent, null);
         });

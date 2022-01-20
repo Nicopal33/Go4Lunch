@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.views.ConnexionActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/connex_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bokeh_background_in_light_tan_rose_1635915"/>
+
+        <ImageView
+            android:id="@+id/connex_logo"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_alignTop="@id/connex_background"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:paddingStart="10dp"
+            android:src="@drawable/logo_go4lunch"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/appli_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Go4Lunch"
+            android:textColor="@color/white"
+            android:textSize="65dp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/connex_logo"/>
+
+        <TextView
+            android:id="@+id/slogan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Find a nice restaurant and invite your co-worker for lunch"
+            android:textStyle="italic"
+            android:textColor="@color/white"
+            android:layout_below="@id/appli_name"
+            android:layout_centerHorizontal="true"/>
+
+        <Button
+            android:id="@+id/connex_google"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="50dp"
+            android:text="Sign in with Google"
+            android:textColor="@color/white"
+            android:drawableStart="@drawable/google_button"
+            android:drawableTint="@color/white"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/slogan"
+            android:backgroundTint="@color/red"/>
+
+        <Button
+            android:id="@+id/connex_mail"
+            android:layout_width="wrap_content"
+            android:layout_height="65dp"
+            android:layout_marginTop="20dp"
+            android:paddingStart="15dp"
+            android:text="Sign in with mail"
+            android:textColor="@color/white"
+            android:drawableStart="@drawable/baseline_email_24"
+            android:drawableTint="@color/white"
+            android:backgroundTint="@color/quantum_grey"
+            android:layout_alignStart="@id/connex_google"
+            android:layout_alignEnd="@id/connex_google"
+            android:layout_below="@id/connex_google"
+            android:layout_centerHorizontal="true"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+</ScrollView>

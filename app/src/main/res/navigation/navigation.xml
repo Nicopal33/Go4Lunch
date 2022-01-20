@@ -18,6 +18,6 @@
     <fragment
         android:id="@+id/workFragment"
         android:name="com.example.goforlunch.bottomfragments.WorlkmatesFragment"
-        tools:layout="@layout/fragment_worlkmates"/>
+        tools:layout="@layout/fragment_workmates"/>
 
 </navigation>

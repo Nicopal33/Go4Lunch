@@ -16,7 +16,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.example.goforlunch.R;
-import com.example.goforlunch.bottomfragments.MapViewFragment;
+//import com.example.goforlunch.bottomfragments.MapViewFragment;
 import com.example.goforlunch.databinding.ActivityMenuBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 

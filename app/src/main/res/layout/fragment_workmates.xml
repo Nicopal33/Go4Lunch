@@ -6,6 +6,6 @@
     android:id="@+id/list_work_recyclerview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".bottomfragments.WorlkmatesFragment"
+    tools:context=".bottomfragments.WorkmatesFragment"
     app:layoutManager="LinearLayoutManager"
     tools:listitem="@layout/workmates_item"/>

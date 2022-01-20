@@ -12,15 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.request.RequestOptions;
-import com.example.goforlunch.databinding.FragmentListViewBinding;
 import com.example.goforlunch.databinding.WorkmatesItemBinding;
 import com.example.goforlunch.model.User;
-import com.example.goforlunch.ui.DetailRestActivity;
-import com.example.goforlunch.ui.views.WorkmateViewHolder;
-import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
-import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.example.goforlunch.ui.DetailActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -48,16 +43,16 @@ public class ListWorkRecyclerViewAdapter
     @Override
     public void onBindViewHolder (@NotNull final ViewHolder holder, int position) {
         User user = users.get(position);
-        String userKnowWhatEatingText = user.getUserName() +
+        String userKnowWhatEatingText = user.getUsername() +
                 "it's eating" + user.getRestaurantName();
-        String userDoestKnowWhatEating = user.getUserName() + "hasn't decided yet";
+        String userDoestKnowWhatEating = user.getUsername() + "hasn't decided yet";
         String placeId = user.getRestaurant();
         if (user.getRestaurantName() !=null && !user.getRestaurantName().equals("")) {
             holder.workmateText.setText(userKnowWhatEatingText);
             holder.workmateText.setTextColor(Color.BLACK);
             holder.workmateText.setTypeface(holder.workmateText.getTypeface(), Typeface.NORMAL);
             holder.mWorkmatesBinding.getRoot().setOnClickListener(v -> {
-                Intent intent = new Intent(v.getContext(), DetailRestActivity.class);
+                Intent intent = new Intent(v.getContext(), DetailActivity.class);
                 intent.putExtra("place Id", placeId);
                 startActivity(v.getContext(), intent, null);
             });

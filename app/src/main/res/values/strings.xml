@@ -22,4 +22,9 @@
 
     <string name="permission_rationale">Location permission is needed for core functionaly</string>
 
+    <string name="notification_chanel_id" translatable="false"> password</string>
+    <string name="no_phone">No phone number for this restaurant</string>
+    <string name="no_website">No website found for this restaurant</string>
+    <string name="info_no_username_found">There iss no name found</string>
+
 </resources>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.DetailRestActivity">
+    tools:context=".ui.DetailActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/detail_app_bar_layout"
@@ -17,6 +17,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true">
+
+            <ImageButton
+                android:id="@+id/arrow_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_arrow_back_24"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:backgroundTint="@color/fui_transparent"
+                app:tint="@color/white"
+                android:contentDescription="TODO" />
+
 
             <ImageView
                 android:id="@+id/detail_photo"
@@ -126,6 +138,7 @@
                     app:layout_constraintTop_toTopOf="parent"/>
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/detail_web_btn"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:drawablePadding="8dp"
@@ -146,7 +159,8 @@
                 android:id="@+id/detail_workmates"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@+id/detail_header"
+
                 tools:listitem="@layout/workmates_item"/>
 
         </LinearLayout>
@@ -154,6 +168,7 @@
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/check_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"

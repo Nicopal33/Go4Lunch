@@ -11,6 +11,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.example.goforlunch.model.User;
+
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
@@ -60,16 +61,15 @@ public class UserCRUDRepository {
         MutableLiveData<User> result = new MutableLiveData<>();
         UserCRUD.getUser(uid).addOnFailureListener(onFailureListener(context)).addOnSuccessListener
                 (documentSnapshot -> {
-              if(documentSnapshot != null) {
-                  User user = documentSnapshot.toObject(User.class);
-                  result.setValue(user);
-              }
-              else {
-                  result.setValue(new User("","","","","",
-                          new ArrayList<>(), "", ""));
-              }
+                    if (documentSnapshot != null) {
+                        User user = documentSnapshot.toObject(User.class);
+                        result.setValue(user);
+                    } else {
+                        result.setValue(new User("", "", "", "", "",
+                                new ArrayList<>(), "", ""));
+                    }
                 });
-        return result;
+                return result;
     }
 
     public void createUser (Context context) {
