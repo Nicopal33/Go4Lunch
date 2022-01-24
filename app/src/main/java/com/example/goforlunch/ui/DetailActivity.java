@@ -35,6 +35,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class DetailActivity extends AppCompatActivity {
@@ -53,7 +54,7 @@ public class DetailActivity extends AppCompatActivity {
     private final String currentUserId = FirebaseAuth.getInstance().getUid();
     private final List<String> mRestaurantLiked = new ArrayList<>();
     private String placeId;
-    private List<User> mUsers = new ArrayList<>();
+    private final List<User> mUsers = new ArrayList<>();
     private NearbyRestViewModel mRestaurantViewModel;
     private final DetailsRecyclerViewAdapter mAdapter = new DetailsRecyclerViewAdapter(mUsers);
 
@@ -79,7 +80,7 @@ public class DetailActivity extends AppCompatActivity {
 
     private void setRestaurant (RestauDetails restaurant) {
         Result restaurant1 = restaurant.getResult();
-        updateWithRestaurant(restaurant1);
+            updateWithRestaurant(restaurant1);
     }
 
     private void updateWithRestaurant (Result mRestaurant) {
@@ -104,13 +105,15 @@ public class DetailActivity extends AppCompatActivity {
                 Glide.with(mImage).load(R.drawable.logo).into(mImage);
             }
             if (mRestaurant.getRating() != null) {
-                mRatingbar.setRating((float) ListRestRecyclerViewAdapter.setRating(mRestaurant.getRating()));
+                mRatingbar.setRating((float)
+                        ListRestRecyclerViewAdapter.setRating(mRestaurant.getRating()));
             }
             mPhoneButton.setOnClickListener(v -> {
                 if (mRestaurant.getInternationalPhoneNumber() != null) {
                     Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse(phone));
                     startActivity(intent);
-                } else {
+                }
+                else {
                     Toast.makeText(this, getString(R.string.no_phone),
                             Toast.LENGTH_SHORT).show();
                 }
@@ -162,9 +165,9 @@ public class DetailActivity extends AppCompatActivity {
         mUserViewModel.updateRestaurantsLiked(currentUserId, restaurantsLiked, restaurantLike, getBaseContext());
     }
 
-    private void setUsersList(List<User> users) {
+    private void setUsersList(User users) {
         mUsers.clear();
-        mUsers.addAll(users);
+        mUsers.addAll((Collection<? extends User>) users);
         mAdapter.notifyDataSetChanged();
     }
 

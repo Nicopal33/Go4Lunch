@@ -94,23 +94,23 @@ public class ListRestRecyclerViewAdapter
             holder.mRestaurantName.setText(restaurant.getName());
         }
         else {
-            holder.mRestaurantName.setText("No Name Foud For This Restaurant");
+            holder.mRestaurantName.setText(R.string.no_name_found);
         }
         if (restaurant.getVicinity() != null){
             String address= restaurant.getVicinity().split(",")[0];
             holder.mRestaurantText.setText(address);
         }
         else {
-            holder.mRestaurantText.setText("Unknow");
+            holder.mRestaurantText.setText(R.string.unknown);
         }
         if (restaurant.getOpeningHours() != null) {
             if (restaurant.getOpeningHours().getOpenNow()) {
-                holder.mRestaurantOpening.setText("Open");
+                holder.mRestaurantOpening.setText(R.string.open);
             }else {
-                holder.mRestaurantOpening.setText("Close");
+                holder.mRestaurantOpening.setText(R.string.close);
             }
         }
-        else { holder.mRestaurantOpening.setText("Unknow"); }
+        else { holder.mRestaurantOpening.setText(R.string.unknown); }
 
         holder.mRestaurantRatingBar.setRating((float) setRating(restaurant.getRating()));
         mUserViewModel.getUsers()

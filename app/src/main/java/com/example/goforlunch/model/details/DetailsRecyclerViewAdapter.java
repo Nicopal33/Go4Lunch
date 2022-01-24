@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.goforlunch.R;
 import com.example.goforlunch.adapter.UserRecyclerViewAdapter;
 import com.example.goforlunch.databinding.WorkmatesItemBinding;
 import com.example.goforlunch.model.User;
@@ -40,10 +41,13 @@ public class DetailsRecyclerViewAdapter extends RecyclerView.Adapter<UserRecycle
     public void onBindViewHolder(@NonNull @NotNull UserRecyclerViewAdapter.ViewHolder holder,
                                  int position) {
         User user = users.get(position);
-        String userJoining = user.getUsername() + "is joining !";
+        String userJoining = user.getUsername() + holder.mWorkmatesItemBinding.getRoot()
+                .getContext().getString(R.string.is_joining);
         holder.userEating.setText(userJoining);
         Glide.with(holder.userImage).load(user.getPicture()).apply(RequestOptions
         .circleCropTransform()).into(holder.userImage);
+
+
     }
 
     @Override

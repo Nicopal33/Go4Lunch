@@ -11,30 +11,30 @@ import androidx.lifecycle.Observer;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class SingleLiveEvent <T> extends MutableLiveData{
-
-    private static final String TAG = "singleLiveEvent";
-    private final AtomicBoolean mPending = new AtomicBoolean(false);
-
-
-    @MainThread
-    public void observe(@NonNull LifecycleOwner owner, @NonNull final Observer observer) {
-        if (hasActiveObservers()) {
-            Log.w(TAG, "Multiple observers registred but only one will be notified of changes");
-        }
-        super.observe(owner, t-> {
-            if(mPending.compareAndSet(true,false)) {
-                observer.onChanged(t);
-            }
-        });
-    }
-
-    @MainThread
-    public void setValue(@Nullable Object t) {
-        mPending.set(true);
-        super.setValue(t);
-    }
-
-
-
-}
+//public class SingleLiveEvent <T> extends MutableLiveData{
+//
+//    private static final String TAG = "singleLiveEvent";
+//    private final AtomicBoolean mPending = new AtomicBoolean(false);
+//
+//
+//    @MainThread
+//    public void observe(@NonNull LifecycleOwner owner, @NonNull final Observer observer) {
+//        if (hasActiveObservers()) {
+//            Log.w(TAG, "Multiple observers registred but only one will be notified of changes");
+//        }
+//        super.observe(owner, t-> {
+//            if(mPending.compareAndSet(true,false)) {
+//                observer.onChanged(t);
+//            }
+//        });
+//    }
+//
+//    @MainThread
+//    public void setValue(@Nullable Object t) {
+//        mPending.set(true);
+//        super.setValue(t);
+//    }
+//
+//
+//
+//}

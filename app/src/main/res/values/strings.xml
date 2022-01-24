@@ -17,14 +17,29 @@
     <string name="bottom_navigation_menu_mapview">Map View</string>
     <string name="bottom_navigation_menu_listview">List View</string>
     <string name="bottom_navigation_menu_workmates">Workmates</string>
-    <string name="navigation_drawer_open">Open Navagation Drawer</string>
-    <string name="navigation_drawer_close">Close Navigation Drawer</string>
-
+    <string name="navigation_drawer_open" translatable="false">Open Navagation Drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close Navigation Drawer</string>
+    <string name="choose_restaurant">Please choose a restaurant</string>
     <string name="permission_rationale">Location permission is needed for core functionaly</string>
+
+    <string name="default_banner">I\'m Hungry</string>
 
     <string name="notification_chanel_id" translatable="false"> password</string>
     <string name="no_phone">No phone number for this restaurant</string>
     <string name="no_website">No website found for this restaurant</string>
-    <string name="info_no_username_found">There iss no name found</string>
+    <string name="info_no_username_found">There is no name found</string>
+    <string name="info_no_email_found">There is no email found</string>
+    <string name="preference">Setting</string>
+
+    <string name="is_joining">is joining</string>
+    <string name="no_name_found">No name found for this restaurant</string>
+    <string name="unknown">Unknown</string>
+    <string name="call">CALL</string>
+    <string name="like">LIKE</string>
+    <string name="website">WEBSITE</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="hint_search_bar">Search Restaurant</string>
+
 
 </resources>
