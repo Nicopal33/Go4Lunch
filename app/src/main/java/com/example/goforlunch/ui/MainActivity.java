@@ -35,6 +35,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.goforlunch.BuildConfig;
 import com.example.goforlunch.R;
+import com.example.goforlunch.bottomfragments.ListViewFragment;
 import com.example.goforlunch.bottomfragments.MapsViewFragment;
 import com.example.goforlunch.bottomfragments.SettingFragment;
 import com.example.goforlunch.bottomfragments.WorkmatesFragment;
@@ -165,7 +166,8 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void showRestaurantFragment() {
-        if (this.listViewFragment == null) this.listViewFragment = MapsViewFragment.newInstance();
+        if (this.listViewFragment == null) this.listViewFragment =
+                ListViewFragment.newInstance(1);
         binding.bannerTitle.setText(R.string.default_banner);
         binding.searchBtn.setColorFilter(getResources().getColor(R.color.white));
         binding.searchBtn.setEnabled(true);
@@ -220,7 +222,7 @@ public class MainActivity extends AppCompatActivity
 
     private void configureNavigationView() {
         NavigationView navigationView = binding.navView;
-        navigationView.setNavigationItemSelectedListener(this::onNavigationBottomItemSelected);
+        navigationView.setNavigationItemSelectedListener(this);
         com.example.goforlunch.databinding.ActivityNavHeaderBinding navHeaderBinding =
                 ActivityNavHeaderBinding.inflate(LayoutInflater.from(navigationView.getContext()));
         navigationView.addHeaderView(navHeaderBinding.getRoot());

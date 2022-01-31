@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mapFragment"
-        android:name="com.example.goforlunch.bottomfragments.MapViewFragment"
+        android:name="com.example.goforlunch.bottomfragments.MapsViewFragment"
         tools:layout="@layout/fragment_map_view"/>
 
     <fragment
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/workFragment"
-        android:name="com.example.goforlunch.bottomfragments.WorlkmatesFragment"
+        android:name="com.example.goforlunch.bottomfragments.WorkmatesFragment"
         tools:layout="@layout/fragment_workmates"/>
 
 </navigation>

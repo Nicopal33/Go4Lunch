@@ -91,6 +91,8 @@ dependencies {
     androidTestImplementation "androidx.work:work-testing:$work_version"
     implementation "androidx.work:work-multiprocess:$work_version"
 
+    implementation 'com.facebook.android:facebook-android-sdk:8.2.0'
+
 
 
 
