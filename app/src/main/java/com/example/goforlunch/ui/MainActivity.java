@@ -206,7 +206,7 @@ public class MainActivity extends AppCompatActivity
 
     private void configureBottomView() {
         BottomNavigationView bottomNavigationView = binding.navBottomBar;
-        bottomNavigationView.setOnNavigationItemReselectedListener(this::onNavigationBottomItemSelected);
+        bottomNavigationView.setOnNavigationItemSelectedListener(this::onNavigationBottomItemSelected);
     }
 
     private void configureDrawerLayout() {

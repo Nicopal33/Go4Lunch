@@ -165,7 +165,7 @@ public class DetailActivity extends AppCompatActivity {
         mUserViewModel.updateRestaurantsLiked(currentUserId, restaurantsLiked, restaurantLike, getBaseContext());
     }
 
-    private void setUsersList(User users) {
+    private void setUsersList(List<User> users) {
         mUsers.clear();
         mUsers.addAll((Collection<? extends User>) users);
         mAdapter.notifyDataSetChanged();

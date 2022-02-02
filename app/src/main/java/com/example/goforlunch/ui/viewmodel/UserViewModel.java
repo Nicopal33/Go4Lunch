@@ -45,8 +45,8 @@ public class UserViewModel extends androidx.lifecycle.ViewModel {
         return mUserCRUDRepository.getUser(uid, context);
     }
 
-    public MutableLiveData<User> getUserByPlaceId (String placeId, Context context) {
-        return mUserCRUDRepository.getUser(placeId, context);
+    public MutableLiveData<List<User>> getUserByPlaceId (String placeId, Context context) {
+        return mUserCRUDRepository.getUserByPlaceId(placeId, context);
     }
 
     public void createCurrentUser (Context context) {

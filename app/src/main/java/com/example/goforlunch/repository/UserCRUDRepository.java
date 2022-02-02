@@ -140,10 +140,10 @@ public class UserCRUDRepository {
     public MutableLiveData<List<String>> getRestaurantsFavorites (String uid, Context context) {
         UserCRUD.getUser(uid).addOnFailureListener(onFailureListener(context))
                 .addOnSuccessListener(documentSnapshot -> {
-                    List<String> restaurantLikedFirestore;
+                    List<String> restaurantLikedFirestore=new ArrayList<>();
                     if (documentSnapshot !=null) {
-                        restaurantLikedFirestore =
-                                (List<String>) documentSnapshot.get("restaurantLiked");
+                        User user = documentSnapshot.toObject(User.class);
+                        restaurantLikedFirestore.addAll(user.getRestaurantsLiked());
                         }
                     else {
                         restaurantLikedFirestore = new ArrayList<>();
