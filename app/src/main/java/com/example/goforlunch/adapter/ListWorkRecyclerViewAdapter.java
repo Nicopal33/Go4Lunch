@@ -1,4 +1,4 @@
-package com.example.goforlunch.adapter;
+/*package com.example.goforlunch.adapter;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -93,4 +93,4 @@ public class ListWorkRecyclerViewAdapter
     @Override
     public String toString () {return super.toString();
     }
-}
+}*/

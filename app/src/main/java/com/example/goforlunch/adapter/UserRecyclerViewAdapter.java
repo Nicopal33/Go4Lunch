@@ -19,6 +19,7 @@ import com.example.goforlunch.ui.DetailActivity;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Collections;
 import java.util.List;
 
 import static androidx.core.content.ContextCompat.startActivity;
@@ -41,8 +42,8 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<UserRecyclerVi
     @Override
     public void onBindViewHolder(@NotNull final ViewHolder holder, int position) {
         User user = users.get(position);
-        String userKnowWhatEatingText = user.getUsername() + "is eating" + user.getRestaurantName();
-        String userDoestKnowWhatEating = user.getUsername() + "hasn't decided yet";
+        String userKnowWhatEatingText = user.getUsername() + " is eating" + user.getRestaurantName();
+        String userDoestKnowWhatEating = user.getUsername() + " hasn't decided yet";
         String placeId = user.getRestaurant();
         if(user.getRestaurantName() != null && !user.getRestaurantName().equals("")) {
             holder.userEating.setText(userKnowWhatEatingText);
@@ -66,6 +67,7 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<UserRecyclerVi
         else {
             holder.userImage.setColorFilter(R.color.primary_color);
         }
+        Collections.sort(users, new User.UserRestaurantComparator());
 
     }
 
@@ -80,6 +82,7 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<UserRecyclerVi
         public ViewHolder(WorkmatesItemBinding workmatesItemBinding) {
             super(workmatesItemBinding.getRoot());
             mWorkmatesItemBinding = workmatesItemBinding;
+            userImage = workmatesItemBinding.userImage;
             userEating = workmatesItemBinding.workmateText;
         }
         @NotNull

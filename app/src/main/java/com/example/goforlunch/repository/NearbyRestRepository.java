@@ -51,12 +51,13 @@ public class NearbyRestRepository {
 
     }
 
-    public MutableLiveData<RestauDetails> getsRestaurant(String placeId, String key) {
+    public MutableLiveData<RestauDetails> getRestaurant(String placeId, String key) {
         MutableLiveData<RestauDetails> restaurantOutputsMutableLiveData = new MutableLiveData<>();
         Call<RestauDetails> restaurantOutputsCall = placesApiService.getFollowingDetails(placeId, key);
         restaurantOutputsCall.enqueue(new Callback<RestauDetails>() {
             @Override
-            public void onResponse(@NotNull Call<RestauDetails> call, @NotNull Response<RestauDetails> response) {
+            public void onResponse(@NotNull Call<RestauDetails> call,
+                                   @NotNull Response<RestauDetails> response) {
                 restaurantOutputsMutableLiveData.setValue(response.body());
             }
 

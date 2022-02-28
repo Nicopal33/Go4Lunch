@@ -22,7 +22,7 @@ import com.example.goforlunch.R;
 import com.example.goforlunch.adapter.ListRestRecyclerViewAdapter;
 import com.example.goforlunch.databinding.ActivityDetailRestBinding;
 import com.example.goforlunch.model.User;
-import com.example.goforlunch.model.details.DetailsRecyclerViewAdapter;
+import com.example.goforlunch.adapter.DetailsRecyclerViewAdapter;
 import com.example.goforlunch.model.restaurants.RestauDetails;
 import com.example.goforlunch.model.restaurants.Result;
 import com.example.goforlunch.repository.UserInjection;
@@ -49,7 +49,7 @@ public class DetailActivity extends AppCompatActivity {
     private AppCompatTextView mPhoneButton;
     private AppCompatTextView mWebButton;
     private AppCompatTextView mLikeButton;
-    private FloatingActionButton mFab;
+    private FloatingActionButton mSelectButton;
     private UserViewModel mUserViewModel;
     private final String currentUserId = FirebaseAuth.getInstance().getUid();
     private final List<String> mRestaurantLiked = new ArrayList<>();
@@ -69,7 +69,7 @@ public class DetailActivity extends AppCompatActivity {
         configureUI();
         configureUserViewModel();
         configureNearbyRestViewModel();
-        mRestaurantViewModel.getRestaurantsDetails(placeId, BuildConfig.API_KEY)
+        mRestaurantViewModel.getRestaurantDetails(placeId, BuildConfig.API_KEY)
                 .observe(this, this::setRestaurant);
         configureUsers();
         RecyclerView recyclerView = mActivityBinding.detailWorkmates;
@@ -128,8 +128,26 @@ public class DetailActivity extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                 }
             });
-            mFab.setOnClickListener(v -> updateRestaurantChoose(mRestaurant));
-            mLikeButton.setOnClickListener(v -> updateRestaurantLiked(mRestaurantLiked, mRestaurant.getPlaceId()));
+            //mSelectButton.setOnClickListener(new View.OnClickListener() {
+            //    @Override
+            //public void onClick(View view) {
+            //    if (!mRestaurant.getSelect()) {
+            //        mSelectButton.setImageDrawable(getResources().getDrawable(R.drawable.baseline_check_ok));
+            //        mRestaurant.setSelect(true);
+            //    } else {
+            //        mSelectButton.setImageDrawable(getResources().getDrawable(R.drawable.baseline_check_circle_24));
+            //        mRestaurant.setSelect(false);
+            //    }
+            //        updateRestaurantChoose(mRestaurant);
+            //}
+//
+//
+            //});
+
+            mSelectButton.setOnClickListener(v-> updateRestaurantChoose(mRestaurant));
+            mLikeButton.setOnClickListener(v -> updateRestaurantLiked(mRestaurantLiked,
+                    mRestaurant.getPlaceId()));
+
         }
     }
 
@@ -141,7 +159,7 @@ public class DetailActivity extends AppCompatActivity {
         mLikeButton = mActivityBinding.detailLikeBtn;
         mWebButton = mActivityBinding.detailWebBtn;
         mReturnButton = mActivityBinding.arrowBack;
-        mFab = mActivityBinding.checkBtn;
+        mSelectButton = mActivityBinding.selectBtn;
         mRatingbar = mActivityBinding.detailRating;
     }
 

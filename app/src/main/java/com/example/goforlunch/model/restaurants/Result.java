@@ -8,9 +8,9 @@ import java.util.List;
 
 public class Result {
 
-    //@SerializedName("address_components")
-    //@Expose
-    //private List<AddressComponent> addressComponents = null;
+    @SerializedName("address_components")
+    @Expose
+    private List<AddressComponent> addressComponents = null;
     @SerializedName("adr_address")
     @Expose
     private String adrAddress;
@@ -77,14 +77,17 @@ public class Result {
     @SerializedName("website")
     @Expose
     private String website;
+    @SerializedName("select")
+    @Expose
+    private boolean select = false;
 
-    //public List<AddressComponent> getAddressComponents() {
-    //    return addressComponents;
-    //}
+    public List<AddressComponent> getAddressComponents() {
+        return addressComponents;
+    }
 
-    //public void setAddressComponents(List<AddressComponent> addressComponents) {
-    //    this.addressComponents = addressComponents;
-    //}
+    public void setAddressComponents(List<AddressComponent> addressComponents) {
+        this.addressComponents = addressComponents;
+    }
 
     public String getAdrAddress() {
         return adrAddress;
@@ -261,6 +264,9 @@ public class Result {
     public void setWebsite(String website) {
         this.website = website;
     }
+    public boolean getSelect() {return select;}
+
+    public void setSelect(boolean select) {this.select=select;}
 
 }
 

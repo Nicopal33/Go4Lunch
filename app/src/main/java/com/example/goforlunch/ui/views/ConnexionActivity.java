@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.goforlunch.databinding.ActivityConnexBinding;
 import com.example.goforlunch.ui.MainActivity;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,12 +28,11 @@ public class ConnexionActivity extends AppCompatActivity {
         com.example.goforlunch.databinding.ActivityConnexBinding binding =
                 ActivityConnexBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
-        //FacebookSdk.sdkInitialize(getApplicationContext());
-        //AppEventsLogger.activateApp(this);
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(this);
         Button googleBtn = binding.connexGoogle;
-        //Button fbBtn = binding.connexionFb;
+        Button fbBtn = binding.connexFb;
         Button emailBtn = binding.connexMail;
-        //Button twitterBtn = binding.connexionTwitter;
         setContentView(view);
         googleBtn.setOnClickListener(v -> {
             if (isCurrentUserLogged()){
@@ -40,13 +41,13 @@ public class ConnexionActivity extends AppCompatActivity {
                 startGoogleSignInActivity();
             }
         });
-        //fbBtn.setOnClickListener(v -> {
-        //    if (isCurrentUserLogged()){
-        //        startMainActivity();
-        //    } else {
-        //        startFacebookSignInActivity();
-        //    }
-        //});
+        fbBtn.setOnClickListener(v -> {
+            if (isCurrentUserLogged()){
+                startMainActivity();
+            } else {
+                startFacebookSignInActivity();
+            }
+        });
         emailBtn.setOnClickListener(v -> {
             if (isCurrentUserLogged()) {
                 startMainActivity();
@@ -55,14 +56,7 @@ public class ConnexionActivity extends AppCompatActivity {
                 startEmailSignInActivity();
             }
         });
-        //twitterBtn.setOnClickListener(v -> {
-        //    if (isCurrentUserLogged()) {
-        //        startMainActivity();
-        //    }
-        //    else {
-        //        startTwitterSignInActivity();
-        //    }
-        //});
+
     }
 
     @Override
@@ -98,14 +92,6 @@ public class ConnexionActivity extends AppCompatActivity {
                 RC_SIGN_IN);
     }
 
-    private void startTwitterSignInActivity() {
-        startActivityForResult(
-                AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(
-                        Collections.singletonList(new AuthUI.IdpConfig.TwitterBuilder().build()))
-                        .setIsSmartLockEnabled(false, true)
-                        .build(),
-                RC_SIGN_IN);
-    }
 
     private void startMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);

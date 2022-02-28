@@ -30,7 +30,7 @@ public class UserCRUDRepository {
                  for (DocumentSnapshot documentSnapshot : documentSnapshots.getDocuments()){
                      if (documentSnapshot !=null && !documentSnapshot.getId().equals(getCurrentUser()
                              .getUid()))  {
-                        User user = (User) documentSnapshot.toObject(User.class);
+                        User user =  documentSnapshot.toObject(User.class);
                         users.add(user);
                     }
                  }
@@ -47,7 +47,7 @@ public class UserCRUDRepository {
             for (DocumentSnapshot documentSnapshot : documentSnapshots.getDocuments()){
                 if (Objects.equals(documentSnapshot.get("restaurant"),placeId) &&!documentSnapshot
                         .getId().equals(getCurrentUser().getUid())) {
-                    User user = (User) documentSnapshot.toObject(User.class);
+                    User user =  documentSnapshot.toObject(User.class);
                     users.add(user);
                 }
             }
@@ -83,7 +83,9 @@ public class UserCRUDRepository {
                     (this.getCurrentUser().getPhotoUrl()).toString() : null;
 
             UserCRUD.createUser(uid, username, email, imageUrl, "", new ArrayList<>(),
-                    "","").addOnSuccessListener(aVoid -> result.setValue(user));
+                    "","").addOnFailureListener
+                    (onFailureListener(context)).addOnSuccessListener
+                    (aVoid -> result.setValue(user));
         }
     }
 
@@ -117,9 +119,9 @@ public class UserCRUDRepository {
 
     public void updateUserRestaurant (String uid, String restaurantId, Context context) {
         MutableLiveData<String> result = new MutableLiveData<>();
-        UserCRUD.updateUserRestaurantName(uid, restaurantId).addOnFailureListener(onFailureListener(context))
+        UserCRUD.updateUserRestaurant(uid, restaurantId).addOnFailureListener(onFailureListener(context))
                 .addOnSuccessListener(aVoid -> {
-                    Toast.makeText(context, "Your choice has been registred", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Your choice has been registered", Toast.LENGTH_SHORT).show();
                     result.setValue(restaurantId);
                 });
     }
@@ -137,21 +139,37 @@ public class UserCRUDRepository {
                 .addOnSuccessListener(aVoid -> result.setValue(restaurantAddress));
     }
 
-    public MutableLiveData<List<String>> getRestaurantsFavorites (String uid, Context context) {
+    public MutableLiveData<List<String>> getRestaurantsFavorites(String uid, Context context) {
         UserCRUD.getUser(uid).addOnFailureListener(onFailureListener(context))
                 .addOnSuccessListener(documentSnapshot -> {
-                    List<String> restaurantLikedFirestore=new ArrayList<>();
-                    if (documentSnapshot !=null) {
-                        User user = documentSnapshot.toObject(User.class);
-                        restaurantLikedFirestore.addAll(user.getRestaurantsLiked());
+                    List<String> restaurantsLikedFirestore;
+                    if (documentSnapshot != null) {
+                        restaurantsLikedFirestore =
+                                (List<String>) documentSnapshot.get("restaurantsLiked");
                         }
                     else {
-                        restaurantLikedFirestore = new ArrayList<>();
+                        restaurantsLikedFirestore = new ArrayList<>();
                     }
-                    mutableLiveData.setValue(restaurantLikedFirestore);
+                    mutableLiveData.setValue(restaurantsLikedFirestore);
                 });
         return mutableLiveData;
     }
+
+    //public MutableLiveData<List<String>> getRestaurantsFavorites (String uid, Context context) {
+    //    UserCRUD.getUser(uid).addOnFailureListener(onFailureListener(context))
+    //            .addOnSuccessListener(documentSnapshot -> {
+    //                List<String> restaurantLikedFirestore=new ArrayList<>();
+    //                if (documentSnapshot !=null) {
+    //                    User user = documentSnapshot.toObject(User.class);
+    //                    restaurantLikedFirestore.addAll(user.getRestaurantsLiked());
+    //                    }
+    //                else {
+    //                    restaurantLikedFirestore = new ArrayList<>();
+    //                }
+    //                mutableLiveData.setValue(restaurantLikedFirestore);
+    //            });
+    //    return mutableLiveData;
+    //}
 
     public void updateRestaurantsLiked (String uid, List<String> restaurantLiked, String restaurantLike, Context context) {
         if (restaurantLiked != null) {
@@ -178,7 +196,7 @@ public class UserCRUDRepository {
     }
 
     private OnFailureListener onFailureListener (Context context) {
-        return e -> Toast.makeText(context, "An Unknow Error Occured", Toast.LENGTH_SHORT).show();
+        return e -> Toast.makeText(context, R.string.fui_error_unknown, Toast.LENGTH_SHORT).show();
     }
 
 

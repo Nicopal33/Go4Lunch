@@ -1,17 +1,25 @@
 <resources>
     <string name="app_name">Go4Lunch</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 
 
     <!-- MAIN ACTIVITY -->
-    <string name="error_not_connected">Vous devez vous connecter !</string>
-    <string name="error_authentication_canceled">Authentification annulée&#8230;</string>
-    <string name="error_no_internet">Aucune connexion internet !</string>
-    <string name="error_unknown_error">Une erreur inconnue s\'est produite&#8230;</string>
-    <string name="connection_succeed">Authentification réussie !</string>
-    <string name="button_login_text_logged">Afficher le profil</string>
-    <string name="button_login_text_not_logged">Connexion</string>
+    <string name="error_not_connected"></string>
+    <string name="error_authentication_canceled"></string>
+    <string name="error_no_internet"></string>
+    <string name="connection_succeed"></string>
+    <string name="button_login_text_logged"></string>
+    <string name="button_login_text_not_logged"></string>
+    <string name="facebook_application_id" translatable="false">295298302660275</string>
+    <string name="facebook_app_id" translatable="false">295298302660275</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb295298302660275</string>
+
+    <string name="restaurant_details">style - address </string>
+    <string name="call">CALL</string>
+    <string name="like">LIKE</string>
+    <string name="website">WEBSITE</string>
+
 
     <!-- BOTTOM NAVIGATION ITEM -->
     <string name="bottom_navigation_menu_mapview">Map View</string>
@@ -20,7 +28,7 @@
     <string name="navigation_drawer_open" translatable="false">Open Navagation Drawer</string>
     <string name="navigation_drawer_close" translatable="false">Close Navigation Drawer</string>
     <string name="choose_restaurant">Please choose a restaurant</string>
-    <string name="permission_rationale">Location permission is needed for core functionaly</string>
+    <string name="permission_rationale" translatable="false">Location permission is needed for core functionaly</string>
 
     <string name="default_banner">I\'m Hungry</string>
 
@@ -34,12 +42,33 @@
     <string name="is_joining">is joining</string>
     <string name="no_name_found">No name found for this restaurant</string>
     <string name="unknown">Unknown</string>
-    <string name="call">CALL</string>
-    <string name="like">LIKE</string>
-    <string name="website">WEBSITE</string>
+
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="hint_search_bar">Search Restaurant</string>
+    <string name="slogan">Find a nice restaurant and invite your co-worker for lunch</string>
+    <string name="name">Name</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="sign_in_with_mail">Sign in with mail</string>
+    <string name="sign_in_with_facebook">Sign in with Facebook</string>
+    <string name="i_m_hungry">I\'m Hungry !!!</string>
+    <string name="email">Email</string>
+    <string name="delete_your_account">DELETE YOUR ACCOUNT</string>
+    <string name="what_workmate_eat">what_workmate_eat</string>
+    <string name="english">English</string>
+    <string name="french">French</string>
+    <string name="your_lunch">YOUR LUNCH</string>
+    <string name="settings">SETTINGS</string>
+    <string name="logout">LOGOUT</string>
+    <string name="available_work">Available_workmates</string>
+    <string name="notif_1">Hello</string>
+    <string name="notif_2">\" it\'s Time to lunch you\'ll eat at\"</string>
+    <string name="notif_3">\" at \"</string>
+    <string name="notif_4">\" with \"</string>
+    <string name="rest_null">\" let\'s choose a restaurant\"</string>
+    <string name="notif_name">Time To lunch</string>
+    <string name="no_rest_found">There is not restaurants near you</string>
+    <string name="fui_error_unknown" translation_description = "General error messages for an unknown failure.">An unknown error occurred</string>
 
 
 </resources>

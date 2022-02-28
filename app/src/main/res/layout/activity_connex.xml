@@ -44,7 +44,7 @@
             android:id="@+id/slogan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Find a nice restaurant and invite your co-worker for lunch"
+            android:text="@string/slogan"
             android:textStyle="italic"
             android:textColor="@color/white"
             android:layout_below="@id/appli_name"
@@ -56,7 +56,7 @@
             android:layout_height="65dp"
             android:layout_marginStart="100dp"
             android:layout_marginTop="50dp"
-            android:text="Sign in with Google"
+            android:text="@string/sign_in_with_google"
             android:textColor="@color/white"
             android:drawableStart="@drawable/google_button"
             android:drawableTint="@color/white"
@@ -70,7 +70,7 @@
             android:layout_height="65dp"
             android:layout_marginTop="20dp"
             android:paddingStart="15dp"
-            android:text="Sign in with mail"
+            android:text="@string/sign_in_with_mail"
             android:textColor="@color/white"
             android:drawableStart="@drawable/baseline_email_24"
             android:drawableTint="@color/white"
@@ -78,6 +78,22 @@
             android:layout_alignStart="@id/connex_google"
             android:layout_alignEnd="@id/connex_google"
             android:layout_below="@id/connex_google"
+            android:layout_centerHorizontal="true"/>
+
+        <Button
+            android:id="@+id/connex_fb"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginTop="20dp"
+            android:paddingStart="15dp"
+            android:layout_alignStart="@id/connex_mail"
+            android:layout_alignEnd="@id/connex_mail"
+            android:drawableStart="@drawable/logo_fb"
+            android:drawableTint="@color/white"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/com_facebook_button_background_color"
+            android:text="@string/sign_in_with_facebook"
+            android:layout_below="@id/connex_mail"
             android:layout_centerHorizontal="true"/>
 
 

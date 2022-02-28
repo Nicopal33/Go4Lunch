@@ -3,17 +3,17 @@
 
     <item
         android:id="@+id/your_lunch"
-        android:title="YOUR LUNCH"
+        android:title="@string/your_lunch"
         android:icon="@drawable/baseline_restaurant_menu_white_24dp"/>
 
     <item
         android:id="@+id/settings"
-        android:title="SETTINGS"
+        android:title="@string/settings"
         android:icon="@drawable/baseline_settings_white_24dp"/>
 
     <item
         android:id="@+id/logout"
-        android:title="LOGOUT"
+        android:title="@string/logout"
         android:icon="@drawable/baseline_power_settings_new_white_24dp"/>
 
 </menu>

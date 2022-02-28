@@ -1,4 +1,4 @@
-package com.example.goforlunch.model.details;
+package com.example.goforlunch.adapter;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -45,7 +45,7 @@ public class DetailsRecyclerViewAdapter extends RecyclerView.Adapter<UserRecycle
                 .getContext().getString(R.string.is_joining);
         holder.userEating.setText(userJoining);
         Glide.with(holder.userImage).load(user.getPicture()).apply(RequestOptions
-        .circleCropTransform()).into(holder.userImage);
+            .circleCropTransform()).into(holder.userImage);
 
 
     }

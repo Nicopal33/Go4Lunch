@@ -18,18 +18,6 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true">
 
-            <ImageButton
-                android:id="@+id/arrow_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/baseline_arrow_back_24"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:backgroundTint="@color/fui_transparent"
-                app:tint="@color/white"
-                android:contentDescription="TODO" />
-
-
             <ImageView
                 android:id="@+id/detail_photo"
                 android:layout_width="match_parent"
@@ -38,6 +26,16 @@
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
                 tools:src="@drawable/salle_2"/>
+
+            <ImageButton
+                android:id="@+id/arrow_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_arrow_back_24"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:backgroundTint="@color/fui_transparent"
+                app:tint="@color/white" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
@@ -68,7 +66,7 @@
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Le Zinc"/>
+                    tools:text="@string/name"/>
 
                 <RatingBar
                     android:id="@+id/detail_rating"
@@ -94,7 +92,7 @@
                     android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="@id/detail_name"
                     app:layout_constraintTop_toBottomOf="@id/detail_name"
-                    tools:text="French Restaurant - 12 rue du Faubourg Poissonnière"/>
+                    tools:text="@string/restaurant_details"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -107,11 +105,11 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/detail_call_btn"
-                    android:layout_width="60dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawablePadding="8dp"
                     android:gravity="center_horizontal"
-                    android:text="CALL"
+                    android:text="@string/call"
                     android:textColor="@color/primary_color"
                     android:textStyle="bold"
                     app:drawableTint="@color/primary_color"
@@ -123,11 +121,11 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/detail_like_btn"
-                    android:layout_width="60dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawablePadding="8dp"
                     android:gravity="center_horizontal"
-                    android:text="LIKE"
+                    android:text="@string/like"
                     android:textColor="@color/primary_color"
                     android:textStyle="bold"
                     android:drawableTint="@color/primary_color"
@@ -143,7 +141,7 @@
                     android:layout_height="wrap_content"
                     android:drawablePadding="8dp"
                     android:gravity="center_horizontal"
-                    android:text="WEBSITE"
+                    android:text="@string/website"
                     android:textColor="@color/primary_color"
                     android:textStyle="bold"
                     android:drawableTint="@color/primary_color"
@@ -160,7 +158,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/detail_header"
-
                 tools:listitem="@layout/workmates_item"/>
 
         </LinearLayout>
@@ -168,17 +165,16 @@
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/check_btn"
+        android:id="@+id/select_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        app:backgroundTint="@color/white"
-        android:contentDescription="Detail floating action button"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/baseline_check_circle_24"
         android:elevation="6dp"
+        app:maxImageSize="40dp"
         app:layout_anchor="@id/detail_collapsing_toolbar"
-        app:layout_anchorGravity="bottom|right|end"
-        app:srcCompat="@drawable/baseline_check_circle_24"
-        app:tint="@color/teal_700"/>
+        app:layout_anchorGravity="bottom|right|end" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

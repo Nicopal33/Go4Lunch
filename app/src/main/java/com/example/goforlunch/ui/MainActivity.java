@@ -14,12 +14,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.view.GravityCompat;
+import androidx.lifecycle.Observer;
 import androidx.work.ExistingWorkPolicy;
 import androidx.work.OneTimeWorkRequest;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -28,13 +28,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.work.OneTimeWorkRequest;
-import androidx.work.Worker;
+//import androidx.work.Worker;
 import androidx.work.WorkManager;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.goforlunch.BuildConfig;
 import com.example.goforlunch.R;
+import com.example.goforlunch.utils.Worker;
 import com.example.goforlunch.bottomfragments.ListViewFragment;
 import com.example.goforlunch.bottomfragments.MapsViewFragment;
 import com.example.goforlunch.bottomfragments.SettingFragment;
@@ -175,10 +176,10 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void showUserFragment() {
-        if (this.workmatesFragment == null) this.workmatesFragment= WorkmatesFragment.newInstance(1);
-        binding.bannerTitle.setText(R.string.default_banner);
-        binding.searchBtn.setColorFilter(getResources().getColor(R.color.primary_color));
+        if (this.workmatesFragment == null) this.workmatesFragment = WorkmatesFragment.newInstance(1);
+        binding.bannerTitle.setText(R.string.available_work);
         binding.searchBtn.setEnabled(false);
+        binding.searchBtn.setColorFilter(getResources().getColor(R.color.primary_color));
         this.startTransactionFragment(workmatesFragment);
     }
 
@@ -288,6 +289,7 @@ public class MainActivity extends AppCompatActivity
                     Bundle bundle = new Bundle();
                     bundle.putDouble("placeLatitude", placeLatitude);
                     bundle.putDouble("placeLongitude", placeLongitude);
+                    bundle.putString("place Id", placeId);
                     MapsViewFragment mapsViewFragment = new MapsViewFragment();
                     mapsViewFragment.setArguments(bundle);
                     startTransactionFragment(mapsViewFragment);
@@ -346,17 +348,37 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void getYourLunch() {
-        if (mUser.getRestaurant() !=null && !mUser.getRestaurant().equals("")) {
+        if (mUser.getRestaurant() != null && !mUser.getRestaurant().equals("")) {
             String placeId = mUser.getRestaurant();
             Intent intent = new Intent(this, DetailActivity.class);
-            intent.putExtra("place Id", placeId);
+            intent.putExtra("placeId", placeId);
             startActivity(intent);
         }
         else {
-            Toast.makeText(getApplicationContext(), R.string.choose_restaurant, Toast.LENGTH_SHORT)
-                    .show();
+            Toast.makeText(getApplicationContext(), R.string.choose_restaurant, Toast.LENGTH_SHORT).show();
         }
     }
+
+    //private void getYourLunch() {
+    //    mUserViewModel.getUser(getCurrentUser().getUid(),this).observe(this, new Observer<User>() {
+    //        @Override
+    //        public void onChanged(User user) {
+    //            mUser = user;
+    //            if (mUser.getRestaurant() !=null && !mUser.getRestaurant().equals("")) {
+    //                String placeId = mUser.getRestaurant();
+    //                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+    //                intent.putExtra("place Id", placeId);
+    //                startActivity(intent);
+    //            }
+    //            else {
+    //                Toast.makeText(getApplicationContext(), R.string.choose_restaurant, Toast.LENGTH_SHORT)
+    //                        .show();
+    //            }
+//
+    //        }
+    //    });
+//
+    //}
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override

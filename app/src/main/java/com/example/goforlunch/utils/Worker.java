@@ -68,16 +68,20 @@ public class Worker extends androidx.work.Worker {
                         }
 
                         if (mUsers.size() != 0) {
-                            message = "Hello" + username +
-                                    "it's Time to lunch you'll eat at" +
-                                    restaurantName + " at " + restaurantAddress + " with " +
+                            message = getApplicationContext().getString(R.string.notif_1) + username +
+                                    getApplicationContext().getString(R.string.notif_2) +
+                                    restaurantName +
+                                    getApplicationContext().getString(R.string.notif_3) +
+                                    restaurantAddress +
+                                    getApplicationContext().getString(R.string.notif_4) +
                                     mWorkmates;
                         }else if (currentUser.getRestaurant() == null ||
                                 currentUser.getRestaurant().equals("")) {
-                            message  = "Hello " + username + " let's choose a restaurant";
+                            message  = getApplicationContext().getString(R.string.notif_1) + username +getApplicationContext().getString(R.string.rest_null);
                         }else {
-                            message = "Hello " + username + "it's Time to lunch you'll eat at "
-                                    + restaurantName + restaurantAddress;
+                            message = getApplicationContext().getString(R.string.notif_1) + username +
+                                    getApplicationContext().getString(R.string.notif_2) + restaurantName +
+                                    getApplicationContext().getString(R.string.notif_3) + restaurantAddress;
                         }
                         sendVisualNotification(message);
                     }
@@ -99,7 +103,7 @@ public class Worker extends androidx.work.Worker {
                 new NotificationCompat.Builder(this.getApplicationContext(), notificationCanal)
                         .setSmallIcon(R.drawable.logo_go4lunch)
                         .setContentTitle
-                                ("Time To lunch")
+                                (this.getApplicationContext().getString(R.string.notif_name))
                         .setContentText(message)
                         .setStyle(new NotificationCompat.BigTextStyle()
                                 .bigText(message))

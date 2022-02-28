@@ -16,8 +16,10 @@ public class RestauOutputs {
     @SerializedName("results")
     @Expose
     private List<ResultRestau> results = null;
-
+    @SerializedName("status")
+    @Expose
     private String status;
+
     public List<Object> getHtmlAttributions() {return htmlAttributions;}
 
     public void setHtmlAttributions(List<Object> htmlAttributions) {
@@ -30,4 +32,11 @@ public class RestauOutputs {
     public List<ResultRestau> getResults() {return results;}
     public void setResults (List<ResultRestau> results) {this.results = results;}
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

@@ -124,7 +124,7 @@ public class ListRestRecyclerViewAdapter
     }
 
     public static double setRating (double rating) {
-        return ((rating / 5) * 3);
+        return ((rating/5)*3);
     }
 
     public void setUsers (List<User> users, ResultRestau restau, ViewHolder holder) {

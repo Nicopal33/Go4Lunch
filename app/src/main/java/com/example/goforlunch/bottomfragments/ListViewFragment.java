@@ -24,7 +24,7 @@ import android.widget.Toast;
 import com.example.goforlunch.BuildConfig;
 import com.example.goforlunch.R;
 import com.example.goforlunch.adapter.ListRestRecyclerViewAdapter;
-import com.example.goforlunch.adapter.ListWorkRecyclerViewAdapter;
+//import com.example.goforlunch.adapter.ListWorkRecyclerViewAdapter;
 import com.example.goforlunch.databinding.FragmentListViewBinding;
 import com.example.goforlunch.model.restaurants.RestauOutputs;
 import com.example.goforlunch.model.restaurants.ResultRestau;
@@ -65,7 +65,6 @@ public class ListViewFragment extends Fragment {
     private String mParam2;
 
     public ListViewFragment() {
-        // Required empty public constructor
     }
 
 
@@ -126,7 +125,7 @@ public class ListViewFragment extends Fragment {
             }
         }
         else {
-            Toast.makeText(this.requireContext(), "There is not restaurants near you",
+            Toast.makeText(this.requireContext(), getString(R.string.no_rest_found),
                     Toast.LENGTH_SHORT).show();
         }
     }

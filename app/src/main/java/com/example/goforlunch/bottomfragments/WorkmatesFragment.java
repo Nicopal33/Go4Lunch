@@ -14,7 +14,8 @@ import android.view.ViewGroup;
 
 
 import com.example.goforlunch.R;
-import com.example.goforlunch.adapter.ListWorkRecyclerViewAdapter;
+//import com.example.goforlunch.adapter.ListWorkRecyclerViewAdapter;
+import com.example.goforlunch.adapter.UserRecyclerViewAdapter;
 import com.example.goforlunch.databinding.FragmentWorkmatesBinding;
 import com.example.goforlunch.databinding.FragmentWorkmatesBinding;
 //import com.example.goforlunch.manager.UserManager;
@@ -38,7 +39,7 @@ public class WorkmatesFragment  extends Fragment  {
     public static final String ARG_COLUMN_COUNT = "column-count";
     private UserViewModel mViewModel;
     private final List<User> users = new ArrayList<>();
-    private final ListWorkRecyclerViewAdapter adapter = new ListWorkRecyclerViewAdapter(users);
+    private final UserRecyclerViewAdapter adapter = new UserRecyclerViewAdapter(users);
 
     public WorkmatesFragment() {}
 

@@ -6,6 +6,8 @@ public class Restaurant {
     String name;
     String address;
 
+    private boolean select = false;
+
     public String getId() {
         return id;
     }
@@ -21,6 +23,10 @@ public class Restaurant {
     public void setName(String name) {
         this.name = name;
     }
+
+    public boolean getSelect() {return select;}
+
+    public void setSelect(boolean select) {this.select=select;}
 
     public String getAddress() {
         return address;

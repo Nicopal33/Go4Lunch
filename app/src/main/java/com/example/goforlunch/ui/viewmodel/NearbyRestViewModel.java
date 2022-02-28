@@ -19,8 +19,8 @@ public class NearbyRestViewModel extends ViewModel {
         return mNearbyRestRepository.getRestaurants(location, radius, key);
     }
 
-    public MutableLiveData<RestauDetails> getRestaurantsDetails (String placeId, String key) {
-        return mNearbyRestRepository.getsRestaurant(placeId, key);
+    public MutableLiveData<RestauDetails> getRestaurantDetails (String placeId, String key) {
+        return mNearbyRestRepository.getRestaurant(placeId, key);
     }
 
 }
