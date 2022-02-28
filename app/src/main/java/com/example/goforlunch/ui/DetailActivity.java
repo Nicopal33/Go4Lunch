@@ -128,23 +128,22 @@ public class DetailActivity extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                 }
             });
-            //mSelectButton.setOnClickListener(new View.OnClickListener() {
-            //    @Override
-            //public void onClick(View view) {
-            //    if (!mRestaurant.getSelect()) {
-            //        mSelectButton.setImageDrawable(getResources().getDrawable(R.drawable.baseline_check_ok));
-            //        mRestaurant.setSelect(true);
-            //    } else {
-            //        mSelectButton.setImageDrawable(getResources().getDrawable(R.drawable.baseline_check_circle_24));
-            //        mRestaurant.setSelect(false);
-            //    }
-            //        updateRestaurantChoose(mRestaurant);
-            //}
-//
-//
-            //});
+            mSelectButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+            public void onClick(View view) {
+                if (!mRestaurant.getSelect()) {
+                    mSelectButton.setImageDrawable(getResources().getDrawable(R.drawable.baseline_check_ok));
+                    mRestaurant.setSelect(true);
+                } else {
+                    mSelectButton.setImageDrawable(getResources().getDrawable(R.drawable.baseline_check_circle_24));
+                    mRestaurant.setSelect(false);
+                }
+                    updateRestaurantChoose(mRestaurant);
+            }
 
-            mSelectButton.setOnClickListener(v-> updateRestaurantChoose(mRestaurant));
+
+            });
+
             mLikeButton.setOnClickListener(v -> updateRestaurantLiked(mRestaurantLiked,
                     mRestaurant.getPlaceId()));
 

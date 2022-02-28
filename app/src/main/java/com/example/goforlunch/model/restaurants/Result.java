@@ -1,6 +1,6 @@
 package com.example.goforlunch.model.restaurants;
 
-import com.google.android.libraries.places.api.model.AddressComponent;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
