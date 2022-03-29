@@ -103,14 +103,8 @@ public class ListRestRecyclerViewAdapter
         else {
             holder.mRestaurantText.setText(R.string.unknown);
         }
-        if (restaurant.getOpeningHours() != null) {
-            if (restaurant.getOpeningHours().getOpenNow()) {
-                holder.mRestaurantOpening.setText(R.string.open);
-            }else {
-                holder.mRestaurantOpening.setText(R.string.close);
-            }
-        }
-        else { holder.mRestaurantOpening.setText(R.string.unknown); }
+        holder.mRestaurantOpening.setText(getRestOpeningHours (restaurant));
+
 
         holder.mRestaurantRatingBar.setRating((float) setRating(restaurant.getRating()));
         mUserViewModel.getUsers()
@@ -121,7 +115,25 @@ public class ListRestRecyclerViewAdapter
             startActivity(v.getContext(), intent, null);
         });
 
+
     }
+
+    public int getRestOpeningHours(ResultRestau restaurant) {
+        int result;
+        if (restaurant.getOpeningHours() != null) {
+            if (restaurant.getOpeningHours().getOpenNow()) {
+                result = R.string.open;
+            }else {
+                result = R.string.close;
+            }
+        }
+        else {
+        result = R.string.unknown;
+        }
+        return result;
+    }
+
+
 
     public static double setRating (double rating) {
         return ((rating/5)*3);
